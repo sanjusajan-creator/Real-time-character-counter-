@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real time character counter</title>
+  <style>
+  body{
+    background-color: rgb(209,229,200)!important;
+  }
+    input:disabled {
+    background-color:#FFFFFF !important;
+    color:#000000 !important;
+    border: 1px solid #ddd !important;
+    opacity: 0.9 !important;
+  }
+    .total{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    #total-box, #word-box{
+      font-size: 60%;
+      font-weight: 900;
+      font-family: fantasy;
+    }
+  </style>
+  <link rel="stylesheet" href="bootstrap.css" type="text/css" media="all" />
+</head>
+<body>
+  <div class="container-sm">
+  <h1 class="fw-bolder text-decoration-underline fs-6 text-center my-2" style="font-family: fantasy;">REAL TIME CHARACTER COUNTER</h1>
+  <input type="text" class="form-control my-3" id="text-box" placeholder="Type your text here"> <div class="total">
+  <input type="text" class="form-control" id="word-box" readonly disabled value="Total number of words: ">
+  <input type="text" class="form-control" id="total-box" readonly disabled value="Total characters: ">
+  </div>
+  </div>
+
+  <script>
+    var textBox=document.getElementById('text-box');
+    var totalBox=document.getElementById('total-box');
+    var wordBox=document.getElementById('word-box');
+    textBox.addEventListener('keyup', characterLength);
+    function characterLength(){
+     var words=textBox.value.trim().split(/\s+/);
+      var wordCount=words.length;
+      wordBox.value=`Total number of words: ${wordCount}`;
+    var length = textBox.value.length;
+      totalBox.value=`Total characters: ${length}`;
+    }
+    
+
+  </script>
+</body>
+</html>
